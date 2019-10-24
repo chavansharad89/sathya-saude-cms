@@ -1,0 +1,38 @@
+.login-form{
+    background-color: #fff;
+    padding: 85px;
+    position: relative;
+    &__title{
+        padding: 10px 15px;
+        font-weight: 600;
+        color: #42393a;
+    }
+    &__forget{
+        margin-top: 20px;   
+    }
+    &__error{
+        position: absolute;
+        top: 54%;
+        color: red;
+        margin-left:10px; 
+    }
+}
+.margin-bottom{
+    margin-bottom: 40px;
+}
+.text{
+    border: none;
+    font-size: 18px;
+    outline: none;
+    width: 100%;
+    margin-left:10px;
+   
+}
+.forget-password{
+    text-decoration: underline ;
+    font-size: 14px;
+    line-height: 23px;
+    color: #00006f;
+    font-weight: 600;
+}
+

@@ -1,0 +1,17 @@
+.approve-note{
+    padding:10px 15px;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    border: 1px solid #39b54a;
+    &__tilte{
+        line-height: 23px;
+        color:#39b54a;
+        font-weight: 600;
+    }
+    &__data{
+        font-size: 15px;
+        line-height: 21px;
+        color: #504a4a;
+        font-weight: 400;
+    }
+}

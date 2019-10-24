@@ -1,0 +1,19 @@
+.table-filter{
+    color: #42393a;
+    position: relative;
+    .dropdown-bar{
+        padding:0 10px;
+        border: none;
+        cursor: pointer;
+    }
+    .dropdown-body{
+        width:100%;
+        background-color: #ffffff;
+        box-shadow: 0.5px 0.866px 24px rgba(48, 47, 47, 0.1);
+        color: #504a4a;
+        padding: 0;
+        position: absolute;
+        top:35px;
+        z-index: 1;
+    }
+}

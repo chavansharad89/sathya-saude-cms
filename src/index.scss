@@ -1,0 +1,19 @@
+@import url('../src/assets/style/font.css');
+@import './assets/style/common/_variables.scss';
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif !important;
+  background-color: $body-background-color;
+  -webkit-text-size-adjust: 100%
+  
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1, p, div,h2,ul,li {
+  padding: 0;
+  margin: 0;
+}

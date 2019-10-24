@@ -1,0 +1,29 @@
+.accordian{
+    padding-left: 5px;
+       
+    &__header {
+        display: flex;
+        justify-content:space-between;  
+        font-size: 16px;
+        cursor: pointer; 
+    }
+
+    &__border-left{
+        border-left: 2px solid #ffffff;
+        padding-left: 3px;
+    }
+    &__body{
+        padding: 15px 38px;
+    }
+    .up{
+        padding-top: 2px;
+     
+        right: 0;
+    }
+    .down{
+        padding-top:3px;
+       
+        right: 0;
+    }
+    
+}

@@ -1,0 +1,110 @@
+@import '../../assets/style/common/variables';
+
+.application-uploads-component{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+
+    &__content {
+        width:23%;
+        margin-top:40px;
+        display: inline-block;
+        border: 1px solid #d7d7d7;
+        border-radius: 8px;
+        box-shadow: 0.5px 0.866px 24px rgba(57,57,57,0.1);
+        overflow: hidden;
+        &__header {
+            background-color: #957945;
+            color:#fff;
+            font-weight: 400;
+            padding:10px 5%;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        &__count {
+            display: flex;
+            justify-content: center;
+            padding:15px 0px;
+            background-color: #fff;
+
+            &__my-uploads, &__all-uploads {
+                text-align: center;
+                font-size: 35px;
+                color: #42393a;
+                font-weight: 300;
+                cursor: pointer;
+            }
+            &__my-uploads { 
+                padding: 0px 25px 0px 15px;
+            }
+            &__all-uploads {
+                padding: 0px 15px 0px 25px;
+            }
+            &__my-uploads:not(:last-child) {
+                border-right: 1px solid lightgray;
+            }
+        }
+    }
+
+    .side-arrow {
+        padding-top: 3px;
+        float: right;
+    }
+
+    .uploads-text {
+        text-transform: capitalize;
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width:1154px) {
+  .application-uploads-component {
+    
+    .uploads-text {
+        font-size: 12px;
+    }
+    &__content {
+        margin-top:20px;
+        &__header {
+            font-size: 14px;
+        }
+        &__count {
+            &__my-uploads{
+                padding: 0px 20px 0px 0px;
+            }
+            &__all-uploads {
+                padding: 0px 0px 0px 20px
+            }
+        }
+    }
+   
+  }
+}
+
+@media screen and (max-width:895px) {
+  .application-uploads-component {
+    padding-bottom: 0px;
+    .side-arrow {
+        padding-top: 0px;
+    }
+        &__content {
+          
+            &__header {
+                font-size: 12px;
+                padding: 5px;
+            }
+            &__count {
+                padding: 10px 5px;
+                &__my-uploads{
+                    padding: 0px 10px 0px 0px;
+                }
+                &__all-uploads {
+                    padding: 0px 0px 0px 10px;
+                }
+            }
+        }
+        
+    }
+}

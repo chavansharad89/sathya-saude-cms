@@ -1,0 +1,19 @@
+.rejection-note{
+    padding:20px;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    border: 1px solid #ad1a1e;
+
+    &__tilte {
+        padding-bottom: 15px;
+        line-height: 23px;
+        color: #ad1a1e;
+        font-weight: 600;
+    }
+    &__data {
+        font-size: 16px;
+        line-height: 21px;
+        color: #504a4a;
+        font-weight: 400;
+    }
+}

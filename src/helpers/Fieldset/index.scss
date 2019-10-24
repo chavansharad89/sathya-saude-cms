@@ -1,0 +1,102 @@
+#fieldset {
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+.required-field {
+    color: rgb(163, 14, 14);
+}
+.fieldset-content {
+    padding-left: 10px;
+}
+.duration-from , .duration-to {
+    border: 1px solid #42393a;
+}
+.duration-from {
+    margin:0px 25px 0px 0px;
+}
+
+.duration-fieldset-title {
+    font-size: 14px;
+    color: gray;
+}
+
+.casetype-dropdown, .fiscal-year-dropdown {
+    width:  65%;
+}
+
+
+.width-30 {
+    width: 33%;
+    display: inline-block;
+}
+
+.fieldset-title {
+    background: white;
+    padding: 0px 8px;
+    font-weight: 600;
+    color: #42393a;
+}
+
+.browsefile {
+    width: 65%;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #42393a;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.browse-icon {
+    padding-left: 10px;
+}
+
+.file-upload-content{
+    padding-left: 10px;
+    color: #504a4a; 
+}
+
+.file-upload-button-text {
+    cursor: pointer;
+    position: absolute;
+    background-color: #957945;
+    padding: 13px 10px;
+    color: #fff;
+    top: 7px;
+    right: -7px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-transform: uppercase;
+}
+
+.field-noteDetails {
+    width: 65%;
+}
+
+.file-upload {
+    display: flex;
+    justify-content: space-between;
+}
+
+.note-details {
+    width:90%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 21px;
+    color: #504a4a;
+    padding-left: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media only screen and (max-width:991px) {
+    .duration-from {
+        margin:0px 7px 0px 0px
+    }
+}

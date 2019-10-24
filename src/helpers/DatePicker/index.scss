@@ -1,0 +1,32 @@
+
+.date-picker {
+    display: block;
+    margin-left: 10px;
+    &__month, &__day, &__year {
+        background: #fff;
+        outline: none;
+        border:none;
+        border-bottom: 1px solid gray;
+        font-size: 16px;
+        color: #504a4a; 
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+option {
+    font-size: 14px;
+    color: #504a4a; 
+    padding-bottom: 5px !important;
+}
+
+@media only screen and (max-width:810px) {
+    .date-picker {
+        margin-left: 0px;
+    }
+}

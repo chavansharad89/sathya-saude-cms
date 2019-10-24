@@ -1,0 +1,47 @@
+.application-action-dropdown {
+    color: #fff;
+    position: relative;
+    text-align: center;
+    border-radius: 22px;
+    box-shadow: 0.5px 0.866px 12px rgba(57,57,57,0.1);
+    background-color: #706d6d; 
+    &__content {
+        display: flex;
+        flex-direction: column;
+        padding: 5px 33px;
+    }
+    select {
+        width: 100px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: capitalize;
+        background-color: transparent;
+        border:none;
+        outline: none;
+        option {
+            color: black;
+        }
+    }  
+    .admin-text {
+        font-size: 14px;
+        color: #c1c0c0;
+    }
+}
+.hide-element {
+    display: none;
+}
+.label{
+    width:49%;
+    background-color: #706d6d; 
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    position: absolute;
+    z-index: 1;
+    left:36px;
+    cursor: pointer;
+}
+
+

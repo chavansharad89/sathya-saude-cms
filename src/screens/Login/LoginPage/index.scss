@@ -1,0 +1,19 @@
+@import '../../../assets/style/common/variables';
+
+
+.login-page{
+    display: flex;
+    background-color: $primary-color;
+    align-items: center;
+    margin-top: 50px;
+    border-radius: 5px;
+    border: 1px solid $primary-color;
+    overflow: hidden;
+    height: 390px;
+    &__block{
+        width: 40%;
+    }
+    &__form{
+        width: 60%;
+    }
+}

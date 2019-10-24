@@ -1,0 +1,125 @@
+@import '../../assets/style/common/variables';
+
+.application-page-title {
+    background-color: $secondary-color;
+    color: $white-color;
+    font-size: $large-font-size;
+    position: relative;
+    font-weight: 400;
+    text-transform: uppercase;
+   
+    &__arrow-images{
+        display: none;
+    }
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        &__subTitle{
+           display: none;
+        }
+    }
+    &__content {
+        padding: 15px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__dropdown-icon{
+            display: none;
+        }
+
+        .dashboard-action-dropdown {
+            margin: 0;
+        }
+    }
+    @media screen and (max-width: 992px) {
+        position: relative;
+        font-size: 20px;
+        background-color: $secondary-color;
+        &__header{
+            &__title{
+                font-weight: 700;
+            }
+            &__subTitle{
+                padding-top:10px; 
+                font-size: 15px;
+                font-weight: 600;
+                display: block;
+            }
+        }
+        .dorpdown{
+            display: none;
+        }
+        &__arrow-images{
+            display: block;
+            position: relative;
+            &__up-arrow{
+                position: absolute;
+                top: -18px;
+                left: 6px;
+            }
+            &__down-arrow{
+                position: absolute; 
+                top: -15px;
+                left: 6px;
+            }
+        }
+        &__content {
+            padding: 15px 0px 15px 0px;
+            &__dropdown-icon{
+                display: inline-block;
+                margin-left: 5px;
+                font-size: 12px;
+            }
+        }
+        .dashboard-action-dropdown {
+            display: none;
+        }
+        .mobile-submenu {
+            display: block;
+        }
+        .desktop-submenu {
+            display: none;
+        }
+    }
+}
+.selected{
+    height: 49px;
+    width:4px;
+    background-color:#ffffff;
+    position: absolute;
+    z-index: 1;
+    top:0px;
+    left: 0px;
+} 
+.border-left{
+    border-left: 2px solid #ffffff;
+    padding-left: 10px; 
+}
+.application-page-menu{
+    background-color: $secondary-color;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    color:  $white-color; 
+    border-top: 1px solid #ffffff;
+}
+.mobile-submenu {
+    display: none;
+    padding: 20px 0;
+    z-index: 1;
+    
+    &__options{
+        padding: 15px 38px;
+        position: relative;
+    }
+    // @media screen and (max-width: 992px) {
+    //     display: block;
+    // }
+}
+// .desktop-submenu{
+//     @media screen and (max-width: 992px) {
+//         display: none;
+//     }
+// }

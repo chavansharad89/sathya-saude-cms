@@ -1,0 +1,14 @@
+.Reset-password-page{
+    display: flex;
+    background-color: #42393a;
+    align-items: center;
+    margin-top: 50px;
+    border-radius: 5px;
+    overflow: hidden;
+    &__block{
+        width: 40%;
+    }
+    &__form{
+        width: 60%;
+    }
+}

@@ -1,0 +1,100 @@
+.application-navigation-menu {
+    ul {
+        margin: 0px;
+        padding-left: 0px;
+        list-style: none;
+        .menu {
+            position: relative;
+            margin-right: 20px; 
+            padding: 10px 0px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 0px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 500;
+            &:last-child {
+                margin-right: 0px;
+                &:hover {
+                    .sub-menu-list{
+                        display: block;
+                        .position-sub-menu {
+                            right: 10%;
+                        }
+                    }
+                }
+            }
+            &:hover {
+                border-bottom: 2px solid #ffffff;
+                .sub-menu-list{
+                    display: block;
+                }
+                &:before {
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: 88%;
+                    left:43%;
+                    z-index: 2; 
+                    border-width: 0px 6px 6px 6px;
+                    border-style: solid;
+                    border-color: #fff transparent;
+                }
+            }
+        }
+    }
+    ul {
+        .menu:nth-child(3) {
+            .sub-menu-list{
+                .position-sub-menu {
+                    right: 0%;
+                    left: -50%;
+                }
+            }
+        }
+    }
+    
+    .sub-menu-list{
+        display: none;
+         .position-sub-menu {
+             top: 100%;
+         }
+    }
+    .menu-active {
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 600 !important;
+        border-bottom: 2px solid #ffffff; 
+
+        &:before {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            top:100%;
+            left:43%;
+            z-index: 2; 
+            border-width: 7px 7px 0px 7px;
+            border-style: solid;
+            border-color: #fff transparent;
+        }
+
+        &:hover {
+            &:before {
+                top: 88%;
+                border-width: 0px 6px 6px 6px;
+            }
+            .sub-menu-list {
+                display: block;
+            }
+        }
+        
+    }
+}
+
+a{
+    text-decoration: none;
+    color: inherit;    
+}

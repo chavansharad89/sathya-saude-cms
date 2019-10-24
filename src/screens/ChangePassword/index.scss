@@ -1,0 +1,17 @@
+.change-password{
+    width: 65%;
+    &__last{
+        width: 65%;
+        margin-bottom: 10px !important;
+    }
+}
+.Change-password-form{
+    &__error{
+        color: red;
+        margin-left:10px; 
+    }
+    &__action-button{
+        margin-bottom: 20px;   
+        margin-top: 30px  !important; 
+    }
+}

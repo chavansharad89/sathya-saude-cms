@@ -1,0 +1,64 @@
+@import '../../assets/style/common/variables';
+
+.application-navigation{
+    background: $primary-color;
+    // padding: 10px 5px;
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        &__title{
+            text-transform: uppercase;
+            padding-top: 10px;
+            color:#fff;
+            font-size: 18px;
+            vertical-align: super;
+            display: inline-block;;
+        }
+    }  
+    &:hover{
+        .application-list{
+            display: block;
+        }
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .application-navigation {
+        padding:20px 0px 0px 0px;
+        &__logo {
+            vertical-align: bottom;
+        }
+        &__title {
+            color:#fff;
+            font-size: 18px;
+            vertical-align: super;
+            padding-left: 40px;
+        }
+        &:hover{
+            .application-list{
+                display: block;
+            }
+        }
+    }
+    .desktop-navigation-menu{
+        display: none;
+    }
+}
+a{
+    text-decoration: none;
+    color: inherit;    
+}
+
+
+@media screen and (max-width: 992px) {
+    .application-navigation {
+        padding:10px 0px 10px 0px;
+        &__logo {
+            display: none;
+        }
+        &__title {
+            padding-left: 0px;
+        }
+    }
+}
+

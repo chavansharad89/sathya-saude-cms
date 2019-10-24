@@ -1,0 +1,37 @@
+.reset-password-form{
+    background-color: #fff;
+    padding: 85px;
+    position: relative;
+   
+    &__error{
+        position: absolute;
+        top: 58%;
+        margin-left:10px; 
+    }
+}
+.margin-bottom{
+    margin-bottom: 40px;
+}
+.text{
+    border: none;
+    font-size: 18px;
+    outline: none;
+    width: 100%;
+    margin-left:10px;
+   background-color: #fff !important;
+}
+.forget-password{
+   
+    font-size: 14px;
+    line-height: 23px;
+   
+    font-weight: 600;
+}
+.ClickHere{
+    text-decoration: underline ;
+    // color: #957945;
+     color: #00006f;
+}
+.red{
+    color: red;
+}

@@ -1,0 +1,14 @@
+.duration-block{
+    display: inline-block;
+    width:34%;
+}
+
+.validation-wrapper {
+    position: relative;
+}
+
+@media only screen and (max-width:991px) {
+    .duration-block {
+        width: 34.5%;
+    }
+}

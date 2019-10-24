@@ -1,0 +1,29 @@
+.application-header{
+    background: url('../../assets/images/header-background.png');
+    padding: 10px 0; 
+
+    &__img{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    @media screen and (max-width: 768px) {
+        &__logo {
+            width: 20%;
+            height: 100%;
+        }
+    }
+
+    &__icon{
+        display: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+        &__icon {
+            display: block;
+            height: 100%;
+            width: 10%;
+        }
+    }
+}

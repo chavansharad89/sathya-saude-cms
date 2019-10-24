@@ -1,0 +1,33 @@
+
+.forget-password-form{  
+    background-color: #fff;
+    padding: 85px;
+    
+    &__form{
+        position: relative;
+        &__error{
+            position: absolute;
+            color: #39b54a;;
+          
+            margin-left:10px; 
+            top:65px;
+        }
+        
+    }
+    &__note{
+        font-size: 15px;
+        line-height: 21px;
+        color: #504a4a;
+        font-weight: 400;
+    }
+   
+}
+.margin-bottom{
+    margin-bottom: 30px;
+}
+.reset-margin{
+    margin: 0 !important;
+}
+.red{
+    color: red;
+}

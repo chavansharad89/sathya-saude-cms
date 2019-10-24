@@ -1,0 +1,54 @@
+.table{
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px 0;
+    position: relative;
+    &__header{
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 35px;
+        color: #504a4a;
+        font-weight: 600;
+        padding: 10px 0;
+        padding-left: 20px;
+    }
+    &__filters{
+        padding:0 10px 10px 10px;
+    }
+    &__Data{
+        padding: 20px 0;
+        background-color: #fff;
+        min-height: 110px;
+        border-top: 1px solid #b7b7b7;
+    }
+}
+.width-50{
+    width:50%;
+}
+.width-40{
+    width:40%
+}
+.width-30{
+    width:30%
+}
+.width-25{
+    width:25%
+}
+.width-20{
+    width:20%
+}
+.width-15{
+    width:15%
+}
+.action-width{
+    width:15%;
+}
+@media (max-width: 928px) {
+    .action-width{ width:15% !important }
+    .edit{ padding-right: 15px !important }
+    .preview{padding-right: 15px !important }
+    .accept{padding-right: 14px !important}
+ }

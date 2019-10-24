@@ -1,0 +1,32 @@
+.application-sub-menu {
+    padding-bottom: 23px;
+    ul {
+        margin: 0px;
+        padding-left: 0px;
+        list-style: none;
+        .sub-menu {
+            margin-right: 15px;
+            padding: 7px 15px 7px 0px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 0px;
+            color: #ffffff;
+            
+            font-weight: 500;
+            &:first-child {
+                padding-left: 0px;
+            }
+        }
+    }
+
+    .active {
+        padding-left: 15px !important;
+        cursor: pointer;
+        display: inline-block;
+        background: white;
+        border-radius: 6px;
+        font-weight: 600 !important;
+        color: #42393a !important;
+    }
+}

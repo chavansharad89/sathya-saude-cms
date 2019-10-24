@@ -1,0 +1,18 @@
+.paginate{
+    text-align: right;
+    padding: 0;
+}
+.pagination{
+    padding: 20px 0 0 0 !important;
+    a{
+        color: #504a4a !important;     
+        font-weight: 400 !important;
+    }
+}
+.is-active{
+    li{
+        border: none!important;
+        color: #957945;
+        font-weight: bold !important;
+    }
+} 

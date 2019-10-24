@@ -1,0 +1,25 @@
+.action-buttons {
+    color: #957945; 
+    margin-bottom: 20px;        
+}
+
+.start-date-error {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: #fff;
+    color: red !important;
+}
+
+.hide-block{
+    display: none;
+}
+
+.end-date-error {
+    position: absolute;
+    top: 60px;
+    left: 365px;
+    padding: 0px 5px;
+    background: #fff;
+    color: red !important;
+}

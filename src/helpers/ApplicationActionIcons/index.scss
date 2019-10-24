@@ -1,0 +1,83 @@
+.action-icons{
+    cursor: pointer;
+    display: flex;   
+
+    .preview{
+        color: #957945;
+        padding-right: 30px;
+        &:hover{
+            .tooltip{
+                display: block;
+                &:before {
+                    right: 70px;
+                }
+            }
+        }
+    }
+    .delete{
+        color: #ad1a1e;
+        &:hover{
+            .tooltip{
+                display: block;
+                &:before {
+                    right: 70px;
+                }
+            }
+        }
+    }
+    .edit{
+        color: #4871cc;
+        padding-right: 30px;
+        &:hover{
+            .tooltip{
+                display: block;
+            }
+        }
+    }
+    .accept{
+        color:#39b54a;
+        padding-right: 30px;
+        &:hover{
+            .tooltip{
+                display: block;
+                &:before {
+                    right: 70px;
+                }
+            }
+        }
+    }
+    .reject{
+        color: #ad1a1e;
+        &:hover{
+            .tooltip{
+                display: block;
+            }
+        }
+    }
+    .tooltip{
+        padding: 5px 20px;
+        position: absolute;
+        display: none;
+        border-radius: 3px;
+        box-shadow: 0.5px 0.866px 12px rgba(57,57,57,0.1);
+        background-color: #ffffff;
+        border: 1px solid #f4e5c8;
+        font-size: 14px;
+        color: #42393a;
+        font-family: "Open Sans";
+        font-weight: 400;
+        &:before {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            bottom: 100%;
+            right: 56px;
+            border-width: 0 5px 9px 5px;
+            border-style: solid;
+            border-color:#f4e5c8 transparent;
+        }
+    }
+}
+
+

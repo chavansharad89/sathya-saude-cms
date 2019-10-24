@@ -1,0 +1,143 @@
+.application-details-status {
+    margin-top: 15px;
+}
+.fromDate{
+    padding-right: 155px;
+}
+.application-details-heading-content {
+    display: flex;
+    justify-content: space-between;
+}
+.application-details-status-heading {
+    padding-right: 10px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    color: #42393a;
+}
+.application-details-status-details {
+    width: 170px;
+    line-height: 25px;
+    display: inline-block;
+}
+
+.application-details {
+    margin:20px 0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding:20px;
+
+    &__heading{
+        padding: 0 0 5px 20px;
+        font-size: 16px;
+        letter-spacing: 1px;
+        line-height: 35px;
+        color: #504a4a;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .super-admin-action-buttons {
+        margin-top: 30px;
+    }
+    
+    &__content {
+        &__required-field {
+            color: rgb(163, 14, 14);
+        }
+        .field-header{
+            color: #42393a;
+            line-height: 23px;
+            font-size: 16px;
+        }
+        .field {
+            padding:20px;
+            font-size: 18px;
+        }
+        &__uploaded-field {
+            display:flex;
+            border-bottom: 1px solid #b7b7b7;
+            &__UploadsData{
+                padding: 0 100px 0px 0;
+                &__title{
+                    padding-bottom: 5px;
+                    font-weight: 600;
+                    padding-right: 10px;
+                } 
+                &__duration-title {
+                    font-size: 14px;
+                    color: gray;
+                }
+            }
+        }
+        &__duration-field {
+            display:flex;
+            border-bottom: 1px solid #b7b7b7;
+            &__Duartion{
+                &__title{
+                    padding-bottom: 5px;
+                    font-weight: 600;
+                    padding-right: 10px;
+                } 
+                &__duration-title {
+                    font-size: 14px;
+                    color: gray;
+                }
+            }
+        } 
+        &__browse-file-field {
+            border-bottom: 1px solid #b7b7b7;
+            &__title-filed{
+                padding-bottom:10px;
+                font-weight: 600;
+            }
+            &__data {
+                text-transform: lowercase;
+            }
+        } 
+        &__note-field {
+            &__title-filed{
+                padding-bottom:10px;
+                font-weight: 600;
+            }
+            &__data{
+                width:66%;
+                font-size: 16px;
+                color: #504a4a; 
+                line-height: 21px;  
+            }
+        }
+        &__casetype-field {
+            border-bottom: 1px solid #b7b7b7;
+            &__title-filed{
+                padding-bottom:10px;
+                font-weight: 600;
+            }
+            &__data{
+                width:66%;
+                color: #504a4a; 
+                line-height: 21px;  
+            }
+        }
+    }
+}
+.file-download
+{
+    padding: 10px 12px;
+    border: 1px solid #957945; 
+    display: flex;
+    justify-content: space-between;
+    width:300px;
+    .file{
+        display: flex;
+    }
+    .span{
+        width: 225px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .icon-download{
+        cursor: pointer;
+        color: #504a4a !important; 
+        
+    }
+}

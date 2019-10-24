@@ -1,0 +1,300 @@
+import React, { Component } from 'react';
+import { Field, SubmissionError,reduxForm } from 'redux-form';
+import ApplicationActionButton from '../../../../../helpers/ApplicationActionButton';
+import ValidationWrapper from '../../../../../helpers/ValidationWrapper';
+import ApplicationModal from '../../../../../helpers/ApplicationModal';
+import { connect } from 'react-redux';
+import ErrorStore from '../../../../../utils/ErrorStore';
+import { required } from '../../../../../utils/Validator';
+import { withRouter } from 'react-router-dom';
+import gql from 'graphql-tag';
+import { withApollo } from 'react-apollo';
+import Toastr from '../../../../../utils/Toastr';
+import { onUploadFormDurationFromChange, 
+    onCategoryAndSubCategoryIdChange,
+    onUploadFormDurationToChange,
+    onUploadFormFileUpload,
+    onUploadFormNoteDetailsChange,
+    onUploadFormFiscalYearChange } from '../store/dispatchers';
+import { getDateDetails, compareDates } from '../../../../../utils/DateFormat';
+import '../../UploadForm/index.scss';
+
+ class FilingsUploadForm extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            submitModal:false,
+            saveModal:false,
+            isValid : false
+        }
+        this._onClose = this._onClose.bind(this)
+        this._save = this._save.bind(this);
+        this._onSubmit = this._onSubmit.bind(this);
+        this._onSave = this._onSave.bind(this);
+        this._onPreview = this._onPreview.bind(this);
+        this._onSubmitClose = this._onSubmitClose.bind(this);
+        this._getSelectedValue = this._getSelectedValue.bind(this);
+    }
+
+    componentWillMount(){
+        const {menuId , subMenuId} = this.props.match.params;
+        this.props.onCategoryAndSubCategoryIdChange(menuId , subMenuId)
+    }
+
+    _onSubmitClose(){
+        this._onClose();
+    }
+
+    _onPreview() {}
+
+    _validate(formDetails) {
+        const errorInstance = ErrorStore();
+        if(formDetails.categoryId !== 4) {
+            errorInstance.add('durationFrom',this._compareDates(), [required]);  
+            errorInstance.add('durationTo', this._compareDates(), [required]);
+            errorInstance.add('browseFile', formDetails.fileId, [required]);
+        }
+        else if(formDetails.categoryId === 4) {
+            errorInstance.add('fiscalYear', formDetails.durationValue.fiscalYear, [required]);
+            errorInstance.add('browseFile', formDetails.fileId, [required]);
+        }
+        return errorInstance.get();
+    }
+    getMutationGql() {
+        return `mutation addDataUpload($uploadFormDetails: UploadFormInput) {
+            addDataUpload(uploadFormDetails: $uploadFormDetails) {
+                dataUploadId
+            }
+        }`
+    }   
+
+    _formatObject(formDetails) {
+        const { categoryId, subCategoryId, durationValue, fileId, notes } = formDetails;
+        const { startDate, endDate, fiscalYear } = durationValue;
+        const _updatedDetails = {
+            categoryId,
+            subCategoryId,
+            durationValue : fiscalYear && fiscalYear !== null ? { fiscalYear : fiscalYear.value } : { startDate, endDate },
+            fileId,
+            notes
+        }
+        return _updatedDetails;
+    }
+
+    _onSubmit(formDetails) {
+        let errors = null;
+        const client = this.props.client;
+        const history = this.props.history;
+        const { categoryId, subCategoryId } = this.props.uploadFormDetails;
+        const details = this._validate(formDetails);
+        const data = this._formatObject(formDetails);
+        const _gql = this.getMutationGql();
+        
+        if(details) {
+            errors = { ...(errors || {}), ...details };
+        }
+        if(errors) {
+            return new Promise(() => {
+                throw new SubmissionError({ ...errors });
+            });            
+        } 
+        else {
+            client.mutate({
+                mutation: gql`${_gql}`,
+                variables: {
+                    'uploadFormDetails': data
+                }
+            }).then(({data} ) => {
+                const { dataUploadId } = data.addDataUpload; 
+                Toastr.success("Data Uploaded Successfully");    
+                history.push(`/menus/${categoryId}/subMenu/${subCategoryId}/${dataUploadId}/details`);
+            })
+            .catch(err => {
+                Toastr.error(err);
+            });
+        }
+    }
+
+    _onSave(){
+        this.setState({
+            saveModal:true,
+        })
+    }
+    _save(){
+        this._onClose();
+    }
+    _onClose(){
+        this.setState({
+            submitModal:false,
+            saveModal:false
+        })
+    }
+
+    _getSelectedValue = (date) => {
+        const _convertedDate = date ? getDateDetails(date) : null;
+        return _convertedDate;
+    }
+
+    _compareDates() {
+        const {startDate, endDate} = this.props.duration;
+        const _date = compareDates(startDate, endDate);
+        return _date
+    }
+
+    render() {
+        const { handleSubmit, 
+            uploadFormDetails, 
+            selectedFile, 
+            durationType,
+            fiscalYearOptions,
+            onUploadFormFileUpload,
+            onUploadFormFiscalYearChange,
+            onUploadFormDurationFromChange, 
+            onUploadFormDurationToChange, 
+            onUploadFormNoteDetailsChange } = this.props;
+        const {submitModal, saveModal} = this.state;
+        const { startDate, endDate, fiscalYear } = this.props.duration;
+        return (
+            <form>
+                {
+                    durationType && durationType.menuId !== "4" ? 
+                    <Field 
+                    props = {{Fieldtype : 'duration', 
+                        className:'duration-from',
+                        isRequired:'true',
+                        fieldsetTitle:'Duration',
+                        validateDateValues : this._compareDates(),
+                        selectedValues:this._getSelectedValue(startDate),
+                        onChange:onUploadFormDurationFromChange}}
+                    name = 'durationFrom'
+                    component = {ValidationWrapper}/>
+                    : <div className = 'hide-block'></div>
+                }
+                {
+                    durationType && durationType.menuId !== "4" ?
+                    <Field 
+                    props = {{Fieldtype : 'duration',
+                        className:'duration-to',
+                        isRequired:'true',
+                        fieldsetTitle:'Duration',
+                        validateDateValues : this._compareDates(),
+                        selectedValues:this._getSelectedValue(endDate),
+                        onChange:onUploadFormDurationToChange}}
+                    name = 'durationTo'
+                    component = {ValidationWrapper}/>
+                    : <div className='hide-block'> </div>
+                }
+                {
+                    durationType && durationType.menuId === "4" 
+                    ?  <Field 
+                    props = {{Fieldtype : 'dropdown',
+                        className:'fiscal-year-dropdown',
+                        isRequired:'true',
+                        fieldsetTitle:'Year',
+                        dropdownoptions:fiscalYearOptions,
+                        fiscalYear: fiscalYear,
+                        onChange: onUploadFormFiscalYearChange}}
+                    name = 'fiscalYear'
+                    component = {ValidationWrapper}/> 
+                    : <div className='hide-block'> </div>
+                }
+                <Field 
+                    props = {{Fieldtype : 'input',
+                        className : 'browsefile',
+                        fieldsetTitle : 'Browse File xlx.',
+                        isRequired : 'true',
+                        selectedFile: selectedFile.file,
+                        type:'file',                        
+                        onFileUploadChange:onUploadFormFileUpload}}
+                    name = 'browseFile'
+                    component = {ValidationWrapper}/>
+                <Field 
+                    props={{Fieldtype: 'textArea',
+                        className:'field-noteDetails',
+                        textAreaClassName:'note-details',
+                        maxLimit:150,
+                        noteDetails:uploadFormDetails.notes,
+                        onchange:onUploadFormNoteDetailsChange,
+                        fieldsetTitle:'Note'}}
+                    name = 'note'
+                    component = {ValidationWrapper}/>
+
+                <div className='action-buttons'>
+                    <span className='icon-eye'></span>
+                    <ApplicationActionButton 
+                        type = "Button"
+                        title = "Preview"
+                        className = "preview-button"
+                        onClick = {(e) => this._onPreview}
+                        />
+                    <ApplicationActionButton 
+                        title = "save"
+                        className = "save-button"
+                        onClick = {(e) => this._onSave(e)}
+                        />
+                    <ApplicationActionButton 
+                        title = "Submit"
+                        className = "submit-button"
+                        onClick = {handleSubmit(() => this._onSubmit(uploadFormDetails))}
+                        />
+                </div>
+                {
+                    submitModal ? <ApplicationModal 
+                        meassage = "Your details Sucessfully submitted."
+                        title = "submit sucessfully" 
+                        showModal = "true"
+                        onClose = {this._onSubmitClose} 
+                        buttons = {[{name:"close"}]}/> : null
+                }
+                {
+                    saveModal ? <ApplicationModal 
+                    meassage = "Do you want to save your data? You will be able to edit your data."
+                    title = "save documents" 
+                    showModal = "true"
+                    onClose = {this._onClose} 
+                    onSave  =  {this._save}
+                    buttons = {[{name:"save"}, {name:"cancel"}]}/> : null
+                }
+            </form>
+        )
+    }
+}
+
+const mapStateToProps = ({uploadForm}) => {
+    return {
+        uploadFormDetails:uploadForm.uploadFormDetails,
+        duration: uploadForm.uploadFormDetails.durationValue,
+        selectedFile: uploadForm.uploadFormDetails.selectedFile,
+        fiscalYearOptions: uploadForm.fiscalYearOptions
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onCategoryAndSubCategoryIdChange(menuId, subMenuId) {
+            dispatch(onCategoryAndSubCategoryIdChange(menuId, subMenuId))
+        },
+        onUploadFormDurationFromChange(values) {
+            dispatch(onUploadFormDurationFromChange(values))
+        },
+        onUploadFormDurationToChange(values) {
+            dispatch(onUploadFormDurationToChange(values))
+        },
+        onUploadFormFileUpload(values) {
+            dispatch(onUploadFormFileUpload(values))
+        },
+        onUploadFormFiscalYearChange(values) {
+            dispatch(onUploadFormFiscalYearChange(values))
+        },
+        onUploadFormNoteDetailsChange(values){
+            dispatch (onUploadFormNoteDetailsChange(values))
+        }
+    };
+};
+
+FilingsUploadForm = reduxForm({
+    'form': 'FilingsUploadForm'
+})(FilingsUploadForm);
+
+const FilingsUploadFormWithApollo = withApollo(FilingsUploadForm);
+export default connect( mapStateToProps, mapDispatchToProps)(withRouter(FilingsUploadFormWithApollo));
